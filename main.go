@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	// n "Neurio2Go/NeurioAPI"	
 	"code.google.com/p/gcfg" // https://code.google.com/p/gcfg/
 )
 
@@ -28,9 +27,9 @@ func main() {
   		os.Exit(1)
 	}
 	fmt.Println("Values from config.gcfg: Neurioclientid =", cfg.Neurio.NeurioClientID,"Neurioclientsecret =",cfg.Neurio.NeurioClientSecret)
-	fmt.Println("Neurio Webservice API Version reported: ", n.NeurioAPIVersion() )
+	fmt.Println("Neurio Webservice API Version reported: ", NeurioAPIVersion() )
 	
-	token, err1 := n.NeurioAccessToken(cfg.Neurio.NeurioClientID,cfg.Neurio.NeurioClientSecret)
+	token, err1 := NeurioAccessToken(cfg.Neurio.NeurioClientID,cfg.Neurio.NeurioClientSecret)
     if err1 != nil {
         fmt.Println("Error!", err1)
         fmt.Println("Neurio2Go failed to get an access token for the clientID and clientSecret provided.")
@@ -42,8 +41,8 @@ func main() {
         fmt.Println("Access Token: ", token )
     }
    
-   var NeurioCurrentUserGlobal n.UserItem 
-   ncuerr := n.NeurioCurrentUserRaw(token, &NeurioCurrentUserGlobal)
+   var NeurioCurrentUserGlobal UserItem 
+   ncuerr := NeurioCurrentUserRaw(token, &NeurioCurrentUserGlobal)
    if ncuerr != nil {
         fmt.Println("Error! ", ncuerr)
         os.Exit(1)
@@ -52,6 +51,6 @@ func main() {
    fmt.Println("Your UserID is",NeurioCurrentUserGlobal.Id)
    
    fmt.Println("Your Sensor ID is",NeurioCurrentUserGlobal.Locations[0].Sensors[0].Channels[3].SensorId)
-   fmt.Println("Your last power usage sample is",n.NeurioLastSample(token,NeurioCurrentUserGlobal.Locations[0].Sensors[0].SensorId),"w")
+   fmt.Println("Your last power usage sample is",NeurioLastSample(token,NeurioCurrentUserGlobal.Locations[0].Sensors[0].SensorId),"w")
    
 }
