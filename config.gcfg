@@ -1,0 +1,4 @@
+[Neurio]
+; Read documentation how to create your Client ID and Client Secret
+Neurioclientid = YOUR_Client_ID
+Neurioclientsecret = YOUR_Client_Secret
