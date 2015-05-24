@@ -1,3 +1,5 @@
+![Neurio](https://img.shields.io/badge/works%20with-Neurio-green.svg)
+
 # neurio-go
 
 This is the unofficial Go(lang) library for the [Neurio](http://www.neur.io) energy sensor [API](https://api.neur.io/docs/)
