@@ -89,3 +89,23 @@ func NeurioAPIVersion() string {
 		}
 		return Powersample.ConsumptionPower
 	}
+
+	func myNeurioAppliances(accessToken string, location string, NAL *ApplianceList) (error) {
+		res, err := goreq.Request{
+		    Method:      "GET",
+	    	Uri:       "https://api.neur.io/v1/appliances?locationId="+location,
+	    	Accept: "application/json",
+	    	ContentType: "application/json",
+	    	Compression: goreq.Gzip(),
+		}.WithHeader("Authorization", "Bearer "+accessToken).Do()
+		if err != nil {
+			fmt.Println("func NeurioAppliances, Error: ",  err)
+		}
+		xerr := res.Body.FromJsonTo(&NAL)
+		if xerr != nil {
+			fmt.Println("func NeurioLastSample FromJsonTo, Error: ",  xerr)
+		} else {
+			// TODO add some optional debug code here
+		}
+		return err
+	}
