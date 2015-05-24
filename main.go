@@ -53,4 +53,14 @@ func main() {
    fmt.Println("Your Sensor ID is",NeurioCurrentUserGlobal.Locations[0].Sensors[0].Channels[3].SensorId)
    fmt.Println("Your last power usage sample is",NeurioLastSample(token,NeurioCurrentUserGlobal.Locations[0].Sensors[0].SensorId),"w")
    
+   var NeurioAppliances ApplianceList
+   nalerr := myNeurioAppliances(token, NeurioCurrentUserGlobal.Locations[0].Sensors[0].LocationId, &NeurioAppliances)
+   if nalerr != nil {
+        fmt.Println("Error! ", nalerr)
+        os.Exit(1)
+    }
+   
+   for i, n := range NeurioAppliances {
+   		fmt.Println("Your appliance", i, n.Label, "has the name", n.Name  )
+   }
 }
