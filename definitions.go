@@ -64,3 +64,12 @@ type UserItem struct {
 	GenerationEnergy int
 	Timestamp string
 }
+
+ type ApplianceList []struct { 
+ 		Label string `json:"label"` 
+ 		Name string `json:"name"` 
+ 		Locationid string `json:"locationId"` 
+ 		Tags []string `json:"tags"` 
+ 		Createdat string `json:"createdAt"` 
+ 		ID string `json:"id"` 
+ 		}
