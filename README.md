@@ -1,7 +1,6 @@
 # neurio-go
-Neurio energy sensor client in golang
 
-This is the unofficial Go(lang) library for the [Neurio](http://www.neur.io) sensor [API](https://api.neur.io/docs/)
+This is the unofficial Go(lang) library for the [Neurio](http://www.neur.io) energy sensor [API](https://api.neur.io/docs/)
 
 The library currently supports:
 
